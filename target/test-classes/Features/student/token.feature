@@ -38,6 +38,12 @@ Feature: Create token
     }
     """
 
+  Scenario: 502 response
+    Given path '/'
+    Given request {"key": !"quality-engineering"}
+    When method POST
+    Then status 502
+
 
 
 
