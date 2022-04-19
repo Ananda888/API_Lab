@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Karate Timeline</title>
+    <style>
+      body, html { font-family: arial, sans-serif; font-size: 11pt; }
+      #visualization { box-sizing: border-box; width: 100%; height: 300px; }
+      .vis-item.failed { background-color: #F2928C; }
+      .page-heading { padding: 0.5em; margin-bottom: 0.5em; background-color: lightcyan; border: 1px solid gray; }
+    </style>
+    <script src="res/vis.min.js"></script>
+    <link href="res/vis.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="page-heading">
+      <a href="karate-summary.html">Summary</a>
+    </div>     
+    <div id="visualization"></div>
+    <script>
+var groups = [{"content":"main","id":1}];
+var items = [{"id":1,"group":1,"content":"src\/test\/resources\/Features\/student\/CreateStudent[1:21]","start":1649917624159,"end":1649917624904,"title":"src\/test\/resources\/Features\/student\/CreateStudent[1:21] 16:27:04.159-16:27:04.904 201 response"},{"id":2,"group":1,"content":"src\/test\/resources\/Features\/student\/CreateStudent[2:29]","start":1649917624908,"end":1649917625045,"title":"src\/test\/resources\/Features\/student\/CreateStudent[2:29] 16:27:04.908-16:27:05.045 400 response"},{"id":3,"group":1,"content":"src\/test\/resources\/Features\/student\/CreateStudent[3:42]","start":1649917625049,"end":1649917625120,"title":"src\/test\/resources\/Features\/student\/CreateStudent[3:42] 16:27:05.049-16:27:05.120 Missing or invalid client id","className":"failed"},{"id":4,"group":1,"content":"src\/test\/resources\/Features\/student\/CreateStudent[4:56]","start":1649917625124,"end":1649917625238,"title":"src\/test\/resources\/Features\/student\/CreateStudent[4:56] 16:27:05.124-16:27:05.238 Invalid token","className":"failed"},{"id":5,"group":1,"content":"src\/test\/resources\/Features\/student\/CreateStudent[5:72]","start":1649917625242,"end":1649917625302,"title":"src\/test\/resources\/Features\/student\/CreateStudent[5:72] 16:27:05.242-16:27:05.302 502 response","className":"failed"}];
+</script>
+    <script>
+      var container = document.getElementById('visualization');
+      var timeline = new vis.Timeline(container);
+      timeline.setOptions({groupOrder: 'content'});
+      timeline.setGroups(new vis.DataSet(groups));
+      timeline.setItems(new vis.DataSet(items));
+    </script>
+  </body>
+</html>

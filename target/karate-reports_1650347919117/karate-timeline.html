@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Karate Timeline</title>
+    <style>
+      body, html { font-family: arial, sans-serif; font-size: 11pt; }
+      #visualization { box-sizing: border-box; width: 100%; height: 300px; }
+      .vis-item.failed { background-color: #F2928C; }
+      .page-heading { padding: 0.5em; margin-bottom: 0.5em; background-color: lightcyan; border: 1px solid gray; }
+    </style>
+    <script src="res/vis.min.js"></script>
+    <link href="res/vis.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="page-heading">
+      <a href="karate-summary.html">Summary</a>
+    </div>     
+    <div id="visualization"></div>
+    <script>
+var groups = [{"content":"main","id":1}];
+var items = [{"id":1,"group":1,"content":"src\/test\/resources\/Features\/student\/AllStudents[1:11]","start":1650347763247,"end":1650347764204,"title":"src\/test\/resources\/Features\/student\/AllStudents[1:11] 15:56:03.247-15:56:04.204 200 response"},{"id":2,"group":1,"content":"src\/test\/resources\/Features\/student\/AllStudents[2:20]","start":1650347764208,"end":1650347764446,"title":"src\/test\/resources\/Features\/student\/AllStudents[2:20] 15:56:04.208-15:56:04.446 401 response - Invalid Client-Id"},{"id":3,"group":1,"content":"src\/test\/resources\/Features\/student\/AllStudents[3:27]","start":1650347764450,"end":1650347764660,"title":"src\/test\/resources\/Features\/student\/AllStudents[3:27] 15:56:04.450-15:56:04.660 401 response - Invalid token"},{"id":4,"group":1,"content":"src\/test\/resources\/Features\/student\/AllStudents[4:34]","start":1650347764663,"end":1650347764828,"title":"src\/test\/resources\/Features\/student\/AllStudents[4:34] 15:56:04.663-15:56:04.828 502 response"}];
+</script>
+    <script>
+      var container = document.getElementById('visualization');
+      var timeline = new vis.Timeline(container);
+      timeline.setOptions({groupOrder: 'content'});
+      timeline.setGroups(new vis.DataSet(groups));
+      timeline.setItems(new vis.DataSet(items));
+    </script>
+  </body>
+</html>
