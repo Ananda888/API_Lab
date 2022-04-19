@@ -56,7 +56,12 @@ Feature: View student details
 
     When method GET
     Then status 401
-
+    And match response ==
+    """
+    {
+    "message": "Unauthorized request."
+}
+    """
 
 
 
@@ -68,6 +73,13 @@ Feature: View student details
 
     When method GET
     Then status 401
+    And match response ==
+    """
+    {
+    "message": "Unauthorized request."
+}
+    """
+
 
 
     Scenario: 404 response
@@ -76,6 +88,13 @@ Feature: View student details
       And header Authorization = auth_token
       When method GET
       Then status 404
+
+      And match response ==
+    """
+    {
+    "message": "No student found!"
+}
+    """
 
 
 
