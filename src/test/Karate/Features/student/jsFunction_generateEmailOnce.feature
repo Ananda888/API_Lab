@@ -1,11 +1,11 @@
-Feature: One instance of an email generation
+Feature: Generate email for user once only
 
   @callOnce
   Scenario: Call email once
     * def jsFunction =
     """
       function() {
-      var DataGenerator = Java.type('helpers.DataGenerator')
+      var DataGenerator = Java.type('helpers.StudentDetailsGenerator')
       var generator = new DataGenerator()
 
       var userDetails = {
@@ -22,7 +22,6 @@ Feature: One instance of an email generation
     """
     * def randomDetails = call jsFunction
     * def inputDetails = randomDetails
-    * print inputDetails
 
 
 

@@ -1,16 +1,12 @@
 Feature: As a user, I am able to view the details of a particular student when I specify their ID
   Background:
 
-  #* def new_student = call read('classpath:Features/student/token.feature@200Response')
-  #* def create_student_feature = call read('classpath:Features/student/CreateStudent.feature')
-
-  * def createdStudent = call read('CreateStudent.feature@201Response')
-
+  * def createdStudent = call read('POST_createStudent.feature@201Response')
   * def auth_token = createdStudent.student_token
   * def student_ID = createdStudent.student_ID
 
 
-  Given url 'http://localhost:8500'
+  Given url baseUrl
 
 
 

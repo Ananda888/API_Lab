@@ -16,7 +16,6 @@ Feature: As a user, I am able to view the details of a vehicle when I specify it
         | data |
 
 
-
     Scenario Outline: Incorrect registration number results in no vehicle being found in the system
       Given path '/vehicle/<!registrationNumber>/details'
       When method GET
@@ -24,7 +23,7 @@ Feature: As a user, I am able to view the details of a vehicle when I specify it
       And match response ==
       """
       {
-      "message": "No vehicle found!"
+      "message": "#String"
        }
       """
 

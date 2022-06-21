@@ -2,18 +2,13 @@
 Feature: As a user, I am able to create a new student in the system by specifying their details
   Background:
 
-    * def new_student = call read('generateToken.feature@200Response')
+    * def new_student = call read('POST_generateToken.feature@200Response')
     * def auth_token = new_student.auth_token
-    * def randomDetails = callonce read('instance.feature@callOnce')
+    * def randomDetails = callonce read('jsFunction_generateEmailOnce.feature@callOnce')
     * def userDetails = randomDetails.inputDetails
 
-    Given url 'http://localhost:8500'
+    Given url baseUrl
     Given path '/student/create'
-
-    #And header Client-Id = client_id
-
-
-
   @201Response
   Scenario: New student is successfully created
     Given header Client-Id = !null
@@ -24,17 +19,18 @@ Feature: As a user, I am able to create a new student in the system by specifyin
     Then status 201
     * def student_ID = response["id"]
     * def student_token = auth_token
-    * print student_token
-
     And match response ==
     """
     {
-
     "id": "#string",
-    "message": "New student was created successfully!"
+    "message": "#string"
     }
     """
     * def studentDetails = userDetails
+
+
+
+
 
 
 #  Scenario: Student cannot be created because they are already in the system

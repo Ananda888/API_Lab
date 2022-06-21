@@ -2,7 +2,7 @@ Feature: As a user, I require an authentication token to be able to interact wit
 
   Background:
 
-    Given url 'http://localhost:8500'
+    Given url baseUrl
     And path '/token'
     * def clientID = !null
     Given header Client-Id = clientID

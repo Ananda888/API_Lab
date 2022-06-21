@@ -11,41 +11,24 @@
       Then status 200
       * def values = response.data
       * def data = karate.map(values, function(value, index) { return { registrationNumber: value} })
-
+      * def convertedDate =
     Scenario Outline: Validate that the response vehicle details matches the source data vehicle details
 
       Given path '/data/<registrationNumber>/details'
       When method GET
       Then status 200
       * def source_data = response
-
       * def dob_source = $response.owner[*].dob
 
       Given path '/vehicle/<registrationNumber>/details'
       When method GET
       Then status 200
+
       * def response_data = response
-
-
-      * def convertDate =
-      """
-      function() {
-        for (var i = 0; i < response.data.owner.length; i++) {
-          var SimpleDateFormat = Java.type('java.text.SimpleDateFormat');
-          var sdf = new SimpleDateFormat('dd/MM/yyyy');
-          var oldDate = response_data.data.owner[i].dateOfBirth;
-          var date = sdf.parse(oldDate);
-          sdf.applyPattern('dd MMMM yyyy');
-          response_data.data.owner[i].dateOfBirth = sdf.format(date)
-
-
-        }
-        return response_data.data.owner
-
-
-      }
-      """
-      * def response_convert = convertDate()
+      * print response_data
+      * def convertedDate = call read('jsFunction_convertDateFormat.feature')
+      * def responseDoB = convertedDate.dateConvert(response_data)
+      * print responseDoB
 
 
       And match response_data.data.vehicle.year == source_data.year
@@ -62,7 +45,7 @@
       And match response_data.data.owner[*].fullName == $source_data.owner[*]fullName
       And match response_data.data.owner[*].driverLicense == $source_data.owner[*].license
       And match response_data.data.owner[*].isCurrentOwner == $source_data.owner[*].isCurrentOwner
-      And match response_convert[*].dateOfBirth == $source_data.owner[*].dob
+      And match responseDoB[*].dateOfBirth == $source_data.owner[*].dob
 
 
       Examples:

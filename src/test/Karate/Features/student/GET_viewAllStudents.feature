@@ -1,23 +1,10 @@
 Feature: As a user, I am able to view the details all students
   Background:
-
-    * def students = call read('CreateStudent.feature@201Response')
+    * def students = call read('POST_createStudent.feature@201Response')
     * def auth_token = students.auth_token
     * def studentDetails = students.studentDetails
     * def student_ID = students.student_ID
-
-    Given url 'http://localhost:8500'
-
-
-    Scenario: Student details are returned to the user successfully
-      Given header Client-Id = !null
-      Given header Authorization = auth_token
-      And path '/students'
-      When method GET
-      Then status 200
-
-      * def studentDetails = students.studentDetails
-      * def studentDetailsJSON =
+    * def studentDetailsJSON =
     """
     function()
     {
@@ -25,7 +12,16 @@ Feature: As a user, I am able to view the details all students
     return convert
     }
     """
-      * def studentDetails = studentDetailsJSON()
+    * def studentDetails = studentDetailsJSON()
+
+    Given url baseUrl
+
+    Scenario: Student details are returned to the user successfully
+      Given header Client-Id = !null
+      Given header Authorization = auth_token
+      And path '/students'
+      When method GET
+      Then status 200
       And match response.students contains
     """
    {
