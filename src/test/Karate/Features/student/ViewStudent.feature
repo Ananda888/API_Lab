@@ -49,61 +49,61 @@ Feature: As a user, I am able to view the details of a particular student when I
 
 
 
-  Scenario: Student details cannot be returned due to invalid or missing client id
-    Given path '/student/' + student_ID + '/details'
-    Given header Client-Id = null
-    And header Authorization = auth_token
-
-    When method GET
-    Then status 401
-    And match response ==
-    """
-    {
-    "message": "Unauthorized request."
-}
-    """
-
-
-
-  Scenario: Student details cannot be returned due to invalid or missing token
-    Given path '/student/' + student_ID + '/details'
-    Given header Client-Id = !null
-    And header Authorization = !auth_token
-
-
-    When method GET
-    Then status 401
-    And match response ==
-    """
-    {
-    "message": "Unauthorized request."
-}
-    """
-
-
-
-    Scenario: Student cannot be found because that student does not exist in the system
-      Given path '/student/' + !student_ID + '/details'
-      Given header Client-ID = !null
-      And header Authorization = auth_token
-      When method GET
-      Then status 404
-
-      And match response ==
-    """
-    {
-    "message": "No student found!"
-}
-    """
-
-
-
-    Scenario: Web server is unable to perform the request
-      Given header Client-Id = !null
-      Given header Authorization = !auth_token
-      And path '/'
-      When method GET
-      Then status 502
+#  Scenario: Student details cannot be returned due to invalid or missing client id
+#    Given path '/student/' + student_ID + '/details'
+#    Given header Client-Id = null
+#    And header Authorization = auth_token
+#
+#    When method GET
+#    Then status 401
+#    And match response ==
+#    """
+#    {
+#    "message": "Unauthorized request."
+#}
+#    """
+#
+#
+#
+#  Scenario: Student details cannot be returned due to invalid or missing token
+#    Given path '/student/' + student_ID + '/details'
+#    Given header Client-Id = !null
+#    And header Authorization = !auth_token
+#
+#
+#    When method GET
+#    Then status 401
+#    And match response ==
+#    """
+#    {
+#    "message": "Unauthorized request."
+#}
+#    """
+#
+#
+#
+#    Scenario: Student cannot be found because that student does not exist in the system
+#      Given path '/student/' + !student_ID + '/details'
+#      Given header Client-ID = !null
+#      And header Authorization = auth_token
+#      When method GET
+#      Then status 404
+#
+#      And match response ==
+#    """
+#    {
+#    "message": "No student found!"
+#}
+#    """
+#
+#
+#
+#    Scenario: Web server is unable to perform the request
+#      Given header Client-Id = !null
+#      Given header Authorization = !auth_token
+#      And path '/'
+#      When method GET
+#      Then status 502
 
 
 

@@ -1,4 +1,4 @@
-Feature: As a user, I am able to view all students
+Feature: As a user, I am able to view the details all students
   Background:
 
     * def students = call read('CreateStudent.feature@201Response')
@@ -41,40 +41,40 @@ Feature: As a user, I am able to view all students
     """
 
 
-
-    Scenario: Access to student details is unauthorised due to invalid Client Id
-      Given header Client-Id = null
-      Given header Authorization = auth_token
-      And path '/students'
-      When method GET
-      Then status 401
-
-      And match response ==
-      """
-        {
-    "message": "Unauthorized request."
-}
-      """
-
-    Scenario: Access to student details is unauthorised due to invalid token
-      Given header Client-Id = !null
-      Given header Authorization = !auth_token
-      And path '/students'
-      When method GET
-      Then status 401
-
-      And match response ==
-
-        """
-        {
-    "message": "Unauthorized request."
-}
-      """
-
-  Scenario: Web server is unable to make the request to view all students
-      Given header Client-Id = !null
-      Given header Authorization = auth_token
-      And path '/'
-      When method GET
-      Then status 502
+#
+#    Scenario: Access to student details is unauthorised due to invalid Client Id
+#      Given header Client-Id = null
+#      Given header Authorization = auth_token
+#      And path '/students'
+#      When method GET
+#      Then status 401
+#
+#      And match response ==
+#      """
+#        {
+#    "message": "Unauthorized request."
+#}
+#      """
+#
+#    Scenario: Access to student details is unauthorised due to invalid token
+#      Given header Client-Id = !null
+#      Given header Authorization = !auth_token
+#      And path '/students'
+#      When method GET
+#      Then status 401
+#
+#      And match response ==
+#
+#        """
+#        {
+#    "message": "Unauthorized request."
+#}
+#      """
+#
+#  Scenario: Web server is unable to make the request to view all students
+#      Given header Client-Id = !null
+#      Given header Authorization = auth_token
+#      And path '/'
+#      When method GET
+#      Then status 502
 

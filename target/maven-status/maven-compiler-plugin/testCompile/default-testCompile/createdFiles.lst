@@ -1,8 +1,1 @@
-Runner/MapDataRunner.class
-Features/student/instanceRunner.class
-Features/student/ViewAllStudentsRunner.class
-Features/student/ViewStudentRunner.class
-Features/student/generateTokenRunner.class
-Features/student/CreateStudentRunner.class
-Runner/TestRunner.class
 helpers/DataGenerator.class

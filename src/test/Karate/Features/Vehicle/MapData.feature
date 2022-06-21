@@ -3,7 +3,7 @@
 # and the field mappings follow data mapping table.
 # This should be done for every element within the Test data automatically.
 
-  Feature: Map data
+  Feature: As a user, I am able to verify that the vehicle data obtained when I request it matches the vehicle data from its source
     Background:
       Given url 'http://localhost:8500'
       And path 'data/regos'
@@ -12,7 +12,7 @@
       * def values = response.data
       * def data = karate.map(values, function(value, index) { return { registrationNumber: value} })
 
-    Scenario Outline: Verify responses for all vehicles
+    Scenario Outline: Validate that the response vehicle details matches the source data vehicle details
 
       Given path '/data/<registrationNumber>/details'
       When method GET

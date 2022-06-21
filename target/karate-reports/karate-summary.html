@@ -11,11 +11,20 @@
     <script type="text/javascript" src="res/bootstrap.min.js"></script>
     <script type="text/javascript" src="res/karate-report.js"></script>
     <script>
-      posthog.register_once({
-        karate_version:"1.2.0.RC5"
-      });
-      posthog.capture('report_summary');
-    </script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
+  api_host:'https://app.posthog.com',
+  persistence:'localStorage',
+  autocapture:false,
+  capture_pageview:false,
+  api_transport:'sendBeacon',
+  loaded: function(posthog) { 
+    posthog.identify("87102833-eee9-4641-b70d-13f0343cdebe",{name:"anachu"});
+    posthog.capture("report_summary",{karate_version:"1.2.1.RC2",karate_meta:null});
+  }
+});
+</script>
+
     <title>Karate Summary Report</title>  
   </head>
   <body>   
@@ -24,19 +33,19 @@
                 
         <div>
   <div class="nav-logo">
-    <a href="karate-summary.html">
-      <img src="karate-logo.svg" alt="Karate"/>
+    <a href="https://karatelabs.io">
+      <img src="karate-labs-logo-ring.svg" alt="Karate Labs"/>
     </a>
     <div class="nav-count">
-      <div id="nav-pass" class="bg-success">1</div>
-      <div id="nav-fail" class="bg-danger">0</div>
+      <div id="nav-pass" class="bg-success">0</div>
+      <div id="nav-fail" class="bg-danger">1</div>
     </div>
   </div>
   <div id="nav-type">
     <div>Features</div>
   </div>         
   <div id="nav-date">
-    <div>2022-06-17 03:28:40 PM</div>
+    <div>2022-06-21 03:36:42 PM</div>
   </div>        
 </div>
 
@@ -58,15 +67,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="passed">              
+            <tr class="failed">              
               <td>
-                <a href="src.test.java.Features.shopping.cart_200.html">src/test/java/Features/shopping/cart_200.feature</a>
+                <a href="src.test.Karate.Features.Vehicle.MapData.html">src/test/Karate/Features/Vehicle/MapData.feature</a>
               </td>
-              <td>Shopping Cart #describe functionality like a user story</td>
-              <td class="num">4</td>
-              <td class="num">0</td>
-              <td class="num">4</td>
-              <td class="num">553</td>            
+              <td>Map data</td>
+              <td class="num">49</td>
+              <td class="num">1</td>
+              <td class="num">50</td>
+              <td class="num">19586</td>            
             </tr>            
           </tbody>
         </table>

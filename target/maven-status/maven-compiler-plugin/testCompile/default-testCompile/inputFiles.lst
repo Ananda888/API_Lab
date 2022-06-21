@@ -1,8 +1,2 @@
-/Users/anachu/Documents/IdeaProjects/API_LAB/src/test/java/Features/student/ViewStudentRunner.java
-/Users/anachu/Documents/IdeaProjects/API_LAB/src/test/java/Runner/TestRunner.java
-/Users/anachu/Documents/IdeaProjects/API_LAB/src/test/java/Features/student/instanceRunner.java
 /Users/anachu/Documents/IdeaProjects/API_LAB/src/test/java/helpers/DataGenerator.java
-/Users/anachu/Documents/IdeaProjects/API_LAB/src/test/java/Runner/MapDataRunner.java
-/Users/anachu/Documents/IdeaProjects/API_LAB/src/test/java/Features/student/ViewAllStudentsRunner.java
-/Users/anachu/Documents/IdeaProjects/API_LAB/src/test/java/Features/student/generateTokenRunner.java
-/Users/anachu/Documents/IdeaProjects/API_LAB/src/test/java/Features/student/CreateStudentRunner.java
+/Users/anachu/Documents/IdeaProjects/API_LAB/src/test/java/RunKarateScenarios.java
