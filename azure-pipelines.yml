@@ -10,6 +10,16 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: @Docker2
+  displayName: Login to Docker Hub
+  inputs:
+    command: login
+    containerRegistry: smartqe/qe-vehicle-v1
+- script: |
+    docker pull smartqe/qe-vehicle-v1:latest
+    docker run -p8500:8500 smartqe/qe-vehicle-v1
+
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'

@@ -38,7 +38,7 @@
       And match response_data.data.registration.address[*].addressLine2 == $source_data.addressModel[*].address2
       And match response_data.data.registration.address[*].state == $source_data.addressModel[*].state
       And match response_data.data.registration.address[*].country == $source_data.addressModel[*].country
-      And match response_data.data.owner[*].fullName == $source_data.owner[*]fullName
+      And match response_data.data.owner[*].fullName == $source_data.owner[*].fullName
       And match response_data.data.owner[*].driverLicense == $source_data.owner[*].license
       And match response_data.data.owner[*].isCurrentOwner == $source_data.owner[*].isCurrentOwner
       And match responseDoB[*].dateOfBirth == $source_data.owner[*].dob
