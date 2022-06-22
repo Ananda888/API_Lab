@@ -5,10 +5,7 @@ Feature: As a user, I am able to view the details of a particular student when I
   * def auth_token = createdStudent.student_token
   * def student_ID = createdStudent.student_ID
 
-
   Given url baseUrl
-
-
 
   Scenario: Student details are successfully returned
     Given path '/student/' + student_ID + '/details'

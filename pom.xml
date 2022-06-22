@@ -109,7 +109,7 @@
                  <simulationsFolder>src/test/Scala</simulationsFolder>
 <!--                    <runMultipleSimulations>true</runMultipleSimulations>-->
                     <includes>
-                        <include>GET_MapVehicleDetails</include>
+                        <include>GET_VehicleDetails_ResponseTest</include>
                     </includes>
                     <jvmArgs>
                         <jvmArg>-Xss100m</jvmArg>

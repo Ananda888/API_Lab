@@ -32,7 +32,6 @@ Feature: As a user, I am able to view the details all students
        "dateOfBirth": #(studentDetails.dateOfBirth),
        "email": #(studentDetails.email),
        "mobileNumber": #(studentDetails.mobileNumber)
-
 }
     """
 

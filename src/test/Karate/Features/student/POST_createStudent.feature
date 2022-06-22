@@ -6,9 +6,9 @@ Feature: As a user, I am able to create a new student in the system by specifyin
     * def auth_token = new_student.auth_token
     * def randomDetails = callonce read('jsFunction_generateEmailOnce.feature@callOnce')
     * def userDetails = randomDetails.inputDetails
-
     Given url baseUrl
     Given path '/student/create'
+
   @201Response
   Scenario: New student is successfully created
     Given header Client-Id = !null

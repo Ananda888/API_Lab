@@ -5,15 +5,14 @@
 
   Feature: As a user, I am able to verify that the vehicle data obtained when I request it matches the vehicle data from its source
     Background:
-      Given url 'http://localhost:8500'
+      Given url baseUrl
       And path 'data/regos'
       When method GET
       Then status 200
       * def values = response.data
       * def data = karate.map(values, function(value, index) { return { registrationNumber: value} })
-      * def convertedDate =
-    Scenario Outline: Validate that the response vehicle details matches the source data vehicle details
 
+    Scenario Outline: Validate that the response vehicle details matches the source data vehicle details
       Given path '/data/<registrationNumber>/details'
       When method GET
       Then status 200
@@ -25,11 +24,8 @@
       Then status 200
 
       * def response_data = response
-      * print response_data
       * def convertedDate = call read('jsFunction_convertDateFormat.feature')
       * def responseDoB = convertedDate.dateConvert(response_data)
-      * print responseDoB
-
 
       And match response_data.data.vehicle.year == source_data.year
       And match response_data.data.vehicle.make == source_data.make
@@ -46,7 +42,6 @@
       And match response_data.data.owner[*].driverLicense == $source_data.owner[*].license
       And match response_data.data.owner[*].isCurrentOwner == $source_data.owner[*].isCurrentOwner
       And match responseDoB[*].dateOfBirth == $source_data.owner[*].dob
-
 
       Examples:
         | data |

@@ -1,7 +1,7 @@
 Feature: As a user, I am able to view the details of a vehicle when I specify its registration
 
   Background:
-    Given url 'http://localhost:8500'
+    Given url baseUrl
     And path 'data/regos'
     When method GET
     Then status 200
@@ -14,7 +14,6 @@ Feature: As a user, I am able to view the details of a vehicle when I specify it
       Then status 200
       Examples:
         | data |
-
 
     Scenario Outline: Incorrect registration number results in no vehicle being found in the system
       Given path '/vehicle/<!registrationNumber>/details'
