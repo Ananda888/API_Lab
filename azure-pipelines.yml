@@ -11,6 +11,7 @@ stages:
           - task: Docker@2
             inputs:
               containerRegistry: 'Docker Hub'
+              repository: 'smartqe'
               command: 'push'
               arguments: 'smartqe/qe-vehicle-v1'
       
