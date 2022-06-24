@@ -10,15 +10,16 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Docker@2
-  displayName: Login to Docker Hub
+- task: DockerInstaller@0
   inputs:
-    command: login
-    containerRegistry: smartqe/qe-vehicle-v1
-- script: |
-    docker pull smartqe/qe-vehicle-v1:latest
-    docker run -p8500:8500 smartqe/qe-vehicle-v1
+    dockerVersion: '17.09.0-ce'
 
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker Hub'
+    command: 'start'
+    container: 'strange_kowalevski'
+  
 
 - task: Maven@3
   inputs:
@@ -27,8 +28,6 @@ steps:
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
-    publishJUnitResuldts: true
+    publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'clean test -P gatling'
-
 
