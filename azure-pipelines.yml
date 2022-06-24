@@ -1,26 +1,33 @@
 trigger:
   - multipleEnvs
 
-pool:
-  vmImage: ubuntu-latest
-steps:
+jobs:
+  - job: DeployContainer 
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+      - task: Docker@2
+        inputs:
+          containerRegistry: 'Docker Hub'
+          command: 'login'
+      - script: |
+          docker run -p8500:8500 smartqe/qe-vehicle-v1
+      
+  - job: PerformanceTest
+    pool:
+      vmImage: ubuntu-latest
+      steps:
+      - task: Maven@3
+        inputs:
+            mavenPomFile: 'pom.xml'
+            mavenOptions: '-Xmx3072m'
+            javaHomeOption: 'JDKVersion'
+            jdkVersionOption: '1.8'
+            jdkArchitectureOption: 'x64'
+            publishJUnitResults: true
+            testResultsFiles: '**/surefire-reports/TEST-*.xml'
+            goals: 'clean test -P gatling'
+  
+  
 
-- task: DockerCompose@0
-  inputs:
-    containerregistrytype: 'Container Registry'
-    dockerRegistryEndpoint: 'Docker Hub'
-    dockerComposeFile: '**/docker-compose.yml'
-    action: 'Run a Docker Compose command'
-- script: docker-compose up 
 
-
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'test'
