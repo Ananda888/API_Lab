@@ -2,16 +2,7 @@ trigger:
   - multipleEnvs
 
 jobs:
-  - job: DeployContainer 
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-      - task: Docker@2
-        inputs:
-          containerRegistry: 'Docker Hub'
-          command: 'login'
-      - script: |
-          docker run -p8500:8500 smartqe/qe-vehicle-v1
+
       
   - job: PerformanceTest
     pool:
