@@ -4,15 +4,16 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 steps:
-- task: Docker@2
+
+- task: DockerCompose@0
   inputs:
-    containerRegistry: 'Docker Hub'
-    command: 'login'
-- task: Docker@2
-  inputs:
-    containerRegistry: 'Docker Hub'
-    command: 'start'
-    container: 'api_lab_smartqe_1'
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'Docker Hub'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'up'
+
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -22,4 +23,4 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'clean test-P gatling'
+    goals: 'test'
