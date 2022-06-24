@@ -1,0 +1,7 @@
+version: '3'
+services:
+  smartqe:
+    image: smartqe/qe-vehicle-v1
+    ports:
+      - "8500:8500"
+
