@@ -17,8 +17,10 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'Docker Hub'
-    command: 'start'
-    container: 'strange_kowalevski'
+    repository: 'smartqe/qe-vehicle-v1'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+
   
 
 - task: Maven@3
