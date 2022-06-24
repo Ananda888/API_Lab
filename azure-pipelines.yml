@@ -11,9 +11,8 @@ stages:
           - task: Docker@2
             inputs:
               containerRegistry: 'Docker Hub'
-              repository: 'smartqe'
+              repository: 'smartqe/qe-vehicle-v1'
               command: 'push'
-              arguments: 'qe-vehicle-v1'
       
       - job: RunTest
         dependsOn: DeployContainer
