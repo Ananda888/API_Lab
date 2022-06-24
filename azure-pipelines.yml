@@ -1,5 +1,5 @@
 trigger:
-  - fixApiLab+Gatling
+  - multipleEnvs
 
 pool:
   vmImage: ubuntu-latest
