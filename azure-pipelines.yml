@@ -4,14 +4,15 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 steps:
-- task: DockerCompose@0
+- task: Docker@2
   inputs:
-    containerregistrytype: 'Container Registry'
-    dockerRegistryEndpoint: 'Docker Hub'
-    dockerComposeFile: '**/docker-compose.yml'
-    action: 'Run a Docker Compose command'
-    dockerComposeCommand: 'up'
-
+    containerRegistry: 'Docker Hub'
+    command: 'login'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker Hub'
+    command: 'start'
+    container: 'api_lab_smartqe_1'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
