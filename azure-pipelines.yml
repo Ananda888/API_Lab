@@ -11,7 +11,7 @@ steps:
     dockerRegistryEndpoint: 'Docker Hub'
     dockerComposeFile: '**/docker-compose.yml'
     action: 'Run a Docker Compose command'
-    dockerComposeCommand: 'up'
+- script: docker-compose up 
 
 
 - task: Maven@3
