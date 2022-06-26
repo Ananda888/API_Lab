@@ -18,8 +18,8 @@ stages:
             inputs:
               containerRegistry: 'Docker Hub'
               command: 'push'
+              repository: 'smartqe/qe-vehicle-v1'
               tags: 'latest'
-              arguments: 'smartqe/qe-vehicle-v1'
               
 
       
