@@ -14,13 +14,9 @@ stages:
               containerRegistry: 'Docker Hub'
               command: 'login'
               
-          - task: Docker@2
+          - task: CmdLine@2
             inputs:
-              containerRegistry: 'Docker Hub'
-              command: 'push'
-              repository: 'smartqe/qe-vehicle-v1'
-              tags: 'latest'
-              
+              script: 'docker push smartqe/qe-vehicle-v1:latest'
 
       
       - job: RunTest
