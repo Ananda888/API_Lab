@@ -19,6 +19,10 @@ stages:
               containerRegistry: 'Docker Hub'
               repository: 'smartqe/qe-vehicle-v1'
               command: 'push'
+              tags: 'latest'
+              arguments: 'smartqe/qe-vehicle-v1'
+              
+
       
       - job: RunTest
         dependsOn: DeployContainer
