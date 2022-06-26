@@ -16,15 +16,13 @@ stages:
               containerRegistry: 'Docker Hub'
               command: 'login'
           
-          - task: CmdLine@2
+          - task: Docker@2
             inputs:
-              script: 'docker tag c5e4f2da3c41 smartqe/qe-vehicle-v1:latest'
+              containerRegistry: 'Docker Hub'
+              repository: 'localhost:8500/smartqe/qe-vehicle-v1'
+              command: 'push'
+              tags: 'latest'
               
-          - task: CmdLine@2
-            inputs:
-              script: 'docker push smartqe/qe-vehicle-v1:latest'
-
-      
       - job: RunTest
         dependsOn: DeployContainer
         condition: succeeded()
