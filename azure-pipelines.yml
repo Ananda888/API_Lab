@@ -13,6 +13,10 @@ stages:
             inputs:
               containerRegistry: 'Docker Hub'
               command: 'login'
+          
+          - task: CmdLine@2
+            inputs:
+              script: 'docker tag c5e4f2da3c41 smartqe/qe-vehicle-v1:latest'
               
           - task: CmdLine@2
             inputs:
