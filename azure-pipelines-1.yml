@@ -19,6 +19,14 @@ jobs:
          dockerComposeFile: '**/docker-compose.yml'
          action: 'Run services'
          buildImages: true
+
+  - job: PerformanceTest
+    dependsOn: DeployContainer
+    condition: succeeded()
+    pool:
+      vmImage: ubuntu-latest
+
+    steps:
      - task: Maven@3
        inputs:
          mavenPomFile: 'pom.xml'
