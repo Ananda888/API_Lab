@@ -5,6 +5,12 @@ pool:
   vmImage: ubuntu-latest
 steps:
 
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker Hub'
+    repository: 'ananda18'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
 
 - task: Maven@3
   inputs:
