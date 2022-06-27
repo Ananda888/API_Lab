@@ -19,7 +19,7 @@ stages:
           - task: Docker@2
             inputs:
               containerRegistry: 'docker.io'
-              repository: 'smartqe/qe-vehicle-v1'
+              repository: 'qe-vehicle-v1'
               command: 'push'
               tags: 'latest'
               
