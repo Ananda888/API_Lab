@@ -119,7 +119,7 @@
                     <runMultipleSimulations>true</runMultipleSimulations>
 <!--                    <includes>-->
 <!--                        <include>GET_VehicleDetails_ResponseTest</include>-->
-<!--                    </includes>-->
+<!--                   </includes>-->
                     <jvmArgs>
                         <jvmArg>-Xss100m</jvmArg>
                     </jvmArgs>

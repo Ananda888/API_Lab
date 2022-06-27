@@ -4,10 +4,10 @@ Feature: As a user, I am able to create a new student in the system by specifyin
 
     * def new_student = call read('POST_generateToken.feature@200Response')
     * def auth_token = new_student.auth_token
-    * def randomDetails = callonce read('jsFunction_generateEmailOnce.feature@callOnce')
+    * def randomDetails = callonce read('jsFunction_generateRandomDetails.feature@callOnce')
     * def userDetails = randomDetails.inputDetails
     Given url baseUrl
-    Given path '/student/create'
+    Given path '/student/create'dock
 
   @201Response
   Scenario: New student is successfully created

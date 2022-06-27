@@ -1,7 +1,7 @@
-Feature: Generate email for user once only
+Feature: As an API tester, I want different student details to be input as the request body each time I call the create student API
 
   @callOnce
-  Scenario: Call email once
+  Scenario: Generate unique student details
     * def jsFunction =
     """
       function() {

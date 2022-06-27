@@ -6,7 +6,7 @@ Feature: As a user, I am able to view the details of a vehicle when I specify it
     #call csv file
     * def dataFile = read(testDataFile)
     #extract car registration numbersGET_vehicleDetails_usingCSV.feature
-    * def carRegos = $dataFile.rego
+    * def carRegos = $dataFile[*].rego
     #map car rego numbers to their index so karate can loop through the test data
     * def testData = karate.map(carRegos, function(value, index) { return { registrationNumber: value} })
 
