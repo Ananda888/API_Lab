@@ -7,7 +7,7 @@ trigger:
 - multipleEnvs
 
 jobs:
-  - job: DeployContainer 
+  - job: Performance Test
     pool: 
       vmImage: ubuntu-latest
 
@@ -20,13 +20,6 @@ jobs:
          action: 'Run services'
          buildImages: true
 
-  - job: PerformanceTest
-    dependsOn: DeployContainer
-    condition: succeeded()
-    pool:
-      vmImage: ubuntu-latest
-
-    steps:
      - task: Maven@3
        inputs:
          mavenPomFile: 'pom.xml'
