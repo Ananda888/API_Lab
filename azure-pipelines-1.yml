@@ -7,7 +7,7 @@ trigger:
 - multipleEnvs
 
 jobs:
-  - job: Performance Test
+  - job: PerformanceTest
     pool: 
       vmImage: ubuntu-latest
 
