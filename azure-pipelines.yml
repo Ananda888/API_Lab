@@ -11,17 +11,11 @@ stages:
           - task: DockerInstaller@0
             inputs:
               dockerVersion: '17.09.0-ce'
-          - task: Docker@2
+          - task: CmdLine@2
             inputs:
-              containerRegistry: 'Docker Hub'
-              command: 'login'
+              script: 'docker pull smartqe/qe-vehicle-v1:latest'
           
-          - task: Docker@2
-            inputs:
-              containerRegistry: 'Docker Hub'
-              repository: 'qe-vehicle-v1'
-              command: 'push'
-              tags: 'latest'
+          
               
       - job: RunTest
         dependsOn: DeployContainer
