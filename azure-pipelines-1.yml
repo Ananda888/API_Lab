@@ -31,6 +31,18 @@ jobs:
          testResultsFiles: '**/surefire-reports/TEST-*.xml'
          goals: 'clean test -P gatling'
 
+     - task: CopyFiles@2
+       inputs:
+         SourceFolder: '$(System.DefaultWorkingDirectory)/target/gatling/'
+         Contents: '**'
+         TargetFolder: '$(System.DefaultWorkingDirectory)/GatlingReportTempFolder'
+
+     - task: PublishBuildArtifacts@1
+       inputs:
+         PathtoPublish: '$(System.DefaultWorkingDirectory)/GatlingReportTempFolder'
+         ArtifactName: 'GatlingReport'
+         publishLocation: 'Container'
+
      
       
   
