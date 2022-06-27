@@ -18,8 +18,8 @@ stages:
           
           - task: Docker@2
             inputs:
-              containerRegistry: 'Docker Hub'
-              repository: 'localhost:8500/smartqe/qe-vehicle-v1'
+              containerRegistry: 'docker.io'
+              repository: 'smartqe/qe-vehicle-v1'
               command: 'push'
               tags: 'latest'
               
