@@ -18,6 +18,8 @@ jobs:
          dockerRegistryEndpoint: 'Docker Hub'
          dockerComposeFile: '**/docker-compose.yml'
          action: 'Run services'
-         buildImages: false
+         buildImages: true
+     
       
+  
   
