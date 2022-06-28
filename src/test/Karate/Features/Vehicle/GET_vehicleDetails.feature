@@ -22,7 +22,7 @@ Feature: As a user, I am able to view the details of a vehicle when I specify it
       And match response ==
       """
       {
-      "message": "#String"
+      "message": "#string"
        }
       """
 
