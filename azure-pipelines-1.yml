@@ -7,19 +7,11 @@ trigger:
 - multipleEnvs
 
 jobs:
-  - job: PerformanceTest
+  - job: Build
     pool: 
       vmImage: ubuntu-latest
 
     steps:
-     - task: DockerCompose@0
-       inputs:
-         containerregistrytype: 'Container Registry'
-         dockerRegistryEndpoint: 'Docker Hub'
-         dockerComposeFile: '**/docker-compose.yml'
-         action: 'Run services'
-         buildImages: true
-
      - task: Maven@3
        inputs:
          mavenPomFile: 'pom.xml'
@@ -27,20 +19,18 @@ jobs:
          javaHomeOption: 'JDKVersion'
          jdkVersionOption: '1.8'
          jdkArchitectureOption: 'x64'
-         publishJUnitResults: true
-         testResultsFiles: '**/surefire-reports/TEST-*.xml'
-         goals: 'clean test -P gatling'
+         goals: 'install -DskipTests -Dgatling.skip'
 
      - task: CopyFiles@2
        inputs:
-         SourceFolder: '$(System.DefaultWorkingDirectory)/target/gatling/'
+         SourceFolder: '$(System.DefaultWorkingDirectory)/target'
          Contents: '**'
-         TargetFolder: '$(System.DefaultWorkingDirectory)/GatlingReportTempFolder'
+         TargetFolder: '$(System.DefaultWorkingDirectory)/BuildTempFolder'
 
      - task: PublishBuildArtifacts@1
        inputs:
-         PathtoPublish: '$(System.DefaultWorkingDirectory)/GatlingReportTempFolder'
-         ArtifactName: 'GatlingReport'
+         PathtoPublish: '$(System.DefaultWorkingDirectory)/BuildTempFolder'
+         ArtifactName: 'API and Load Automation'
          publishLocation: 'Container'
 
      
