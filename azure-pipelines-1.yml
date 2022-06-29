@@ -28,16 +28,18 @@ jobs:
          jdkVersionOption: '1.8'
          jdkArchitectureOption: 'x64'
          goals: 'install -DskipTests -Dgatling.skip'
-
+      
      - task: CopyFiles@2
        inputs:
-         SourceFolder: '$(System.DefaultWorkingDirectory)/target'
-         Contents: '**'
-         TargetFolder: '$(System.DefaultWorkingDirectory)/BuildTempFolder'
+         SourceFolder: '$(System.DefaultWorkingDirectory)'
+         Contents: 'API_LAB'
+         TargetFolder: '$(System.DefaultWorkingDirectory)'
+
+     
 
      - task: PublishBuildArtifacts@1
        inputs:
-         PathtoPublish: '$(System.DefaultWorkingDirectory)/BuildTempFolder'
+         PathtoPublish: '$(System.DefaultWorkingDirectory)'
          ArtifactName: 'API and Load Automation'
          publishLocation: 'Container'
 
