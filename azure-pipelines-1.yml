@@ -10,15 +10,6 @@ jobs:
   - job: Build
     pool: 
       vmImage: ubuntu-latest
-    
-
-    steps:
-     - task: DockerCompose@0
-       inputs:
-        containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'Docker Hub'
-        dockerComposeFile: '**/docker-compose.yml'
-        action: 'Run services'
         
      - task: Maven@3
        inputs:
